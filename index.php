@@ -26,8 +26,6 @@ if ($params[0] != "") {
     }
 }else{
     include(ROOT . 'controllers/Sweat.php');
-    var_dump("dkodjzio");
-    var_dump('ntm');
     $controller = new Sweat();
     $controller->index();
 }
