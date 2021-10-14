@@ -14,6 +14,7 @@ if ($params[0] != "") {
     require_once (ROOT.'controllers/'.$controller.'.php');
 
     $controller = new $controller();
+
     //var_dump($controller);
     if (method_exists($controller, $action)){
         unset($params[0]);
@@ -25,6 +26,8 @@ if ($params[0] != "") {
     }
 }else{
     include(ROOT . 'controllers/Sweat.php');
+    var_dump("dkodjzio");
+    var_dump('ntm');
     $controller = new Sweat();
     $controller->index();
 }

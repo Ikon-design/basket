@@ -1,9 +1,7 @@
 <?php
 
-use Log;
 // Connection à la bdd
 abstract class Model{
-    private $log;
     private $host = "localhost";
     private $db_name = "nbc";
     private $username = "root";

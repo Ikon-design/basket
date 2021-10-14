@@ -7,11 +7,12 @@ require 'vendor/autoload.php';
 
 class Sweat extends Controller
 {
-    /**
+    /*
      * @return void
      */
     public function index()
     {
+        var_dump('dodsd');
         $this->loadModel("Sweats");
         $this->render('index');
     }

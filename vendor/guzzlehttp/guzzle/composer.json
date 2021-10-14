@@ -62,7 +62,7 @@
             "GuzzleHttp\\": "src/"
         },
         "files": [
-          "src/functions_include.php"
+            "src/functions_include.php"
         ]
     },
     "autoload-dev": {
