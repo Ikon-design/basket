@@ -40,7 +40,7 @@ class Sweat extends Controller
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
         $mail->SMTPAuth = true;
         $mail->Username = 'nbc.contact.sweat@gmail.com';
-        $mail->Password = 'RawxxjBzh6DmveG';
+        $mail->Password = '';
         $mail->setFrom('nbc.contact.sweat@gmail.com', 'First Last');
         $mail->addAddress($_POST["mail"], $name . " " . $firstName);
         $mail->Subject = 'Votre commande de Sweat';
@@ -103,7 +103,7 @@ class Sweat extends Controller
         $mailReceived->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
         $mailReceived->SMTPAuth = true;
         $mailReceived->Username = 'nbc.contact.sweat@gmail.com';
-        $mailReceived->Password = 'RawxxjBzh6DmveG';
+        $mailReceived->Password = '';
         $mailReceived->setFrom('nbc.contact.sweat@gmail.com', 'Confirmation de reception');
         $mailReceived->addAddress($params["mail"], $params["name"] . " " . $params["firstName"]);
         $mailReceived->Subject = 'Confirmation de reception';

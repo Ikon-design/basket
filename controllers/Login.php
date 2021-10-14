@@ -3,7 +3,7 @@ class Login extends Controller {
     public function index(){
         $this->loadModel(Logins);
         if (isset($_POST['password'])){
-            if ($_POST['password'] == 'roberTheBest<3'){
+            if ($_POST['password'] == ''){
                 $_SESSION['loged'] = true;
                 header('location: /sweat/read');
             }
