@@ -192,3 +192,17 @@ h5{
     font-weight: 700;
 }
 
+@media screen and (max-width: 720px) {
+    .form-name-left {
+        grid-column: 1/3;
+    }
+    .form-name-right{
+        grid-column: 1/3;
+    }
+    .form-container{
+        width: 80vw;
+    }
+    .request-title{
+        text-align: center;
+    }
+}
