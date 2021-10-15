@@ -12,7 +12,6 @@ class Sweat extends Controller
      */
     public function index()
     {
-        var_dump('dodsd');
         $this->loadModel("Sweats");
         $this->render('index');
     }
