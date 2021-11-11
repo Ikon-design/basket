@@ -72,6 +72,7 @@ table {
     color: white;
     text-align: left;
     justify-self: flex-start;
+    margin-bottom: 25px;
 }
 
 td, tr, th {
@@ -190,6 +191,13 @@ h5{
     font-size: 20px;
     font-family: Montserrat;
     font-weight: 700;
+}
+
+.success-title{
+    color: white;
+    font-size: 20px;
+    font-family: Montserrat;
+    margin-bottom: 15px;
 }
 
 @media screen and (max-width: 720px) {

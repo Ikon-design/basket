@@ -23,7 +23,7 @@
             <input type="tel" pattern="^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$" class=" input" oninput="onChangeValue('téléphone')" name="tel" required/>
         </label>
 
-        <label class="form-child display-flex label">
+        <label class="form-name-left display-flex label">
             Sélectionnez une taille :
             <select name="size" class="input" onchange="onChangeValue('taille')">
                 <option>6 ans</option>
@@ -36,6 +36,15 @@
                 <option>l</option>
                 <option>xl</option>
                 <option>xxl</option>
+            </select>
+        </label>
+        <label class="form-name-right display-flex label">
+            Sélectionnez la couleur :
+            <select name="colors" class="input">
+                <option>Orange</option>
+                <option>Bleu</option>
+                <option>Blanc</option>
+                <option>Noir</option>
             </select>
         </label>
         <label class="form-child display-flex label">

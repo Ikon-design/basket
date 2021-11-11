@@ -17,6 +17,7 @@ isset($_SESSION['loged']) ? null : header('location: /login')
                 <th>tel</th>
                 <th>taille</th>
                 <th>Flocage</th>
+                <th>Couleur</th>
                 <th>Payé</th>
                 <th>Reçu</th>
                 <th>Retiré</th>
@@ -33,6 +34,7 @@ isset($_SESSION['loged']) ? null : header('location: /login')
                         <td><?= $data['tel'] ?></td>
                         <td><?= $data['size'] ?></td>
                         <td><?= $data['flocking'] ?></td>
+                        <td><?= $data['colors'] ?></td>
                         <td><input type='checkbox' <?= $data['payed'] ?>
                                    onclick=(window.location='./updatePayed/<?= $data['id'] ?>')></td>
                         <td>

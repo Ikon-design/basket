@@ -18,9 +18,10 @@ class Sweats extends Model
         $tel = $_POST["tel"];
         $size = $_POST["size"];
         $flocking = $_POST["flocking"];
-        $sql = "INSERT INTO request (name, firstName, mail, tel, flocking, size, received, took, payed) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $colors = $_POST['colors'];
+        $sql = "INSERT INTO request (name, firstName, mail, tel, flocking, size, colors ,received, took, payed) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $query = $this->bdd->prepare($sql);
-        $res = $query->execute(array($name, $firstName, $email, $tel, $flocking, $size, 0, 0, 0));
+        $res = $query->execute(array($name, $firstName, $email, $tel, $flocking, $size, $colors ,0, 0, 0));
         return $res;
     }
 
