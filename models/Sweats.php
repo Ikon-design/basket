@@ -70,6 +70,12 @@ class Sweats extends Model
         $query = $this->bdd->prepare($sql);
         $res = $query->execute();
     }
+    public function updateReceivedWithMail($id, $params)
+    {
+        $sql = "UPDATE request SET received = $params[received] WHERE request.id = $id";
+        $query = $this->bdd->prepare($sql);
+        $res = $query->execute();
+    }
 
     public function updateTook($id, $params)
     {

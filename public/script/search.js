@@ -2,7 +2,7 @@ let table = document.getElementById('table')
 let dialog = document.getElementById('dialog')
 let updateReceived = document.getElementById('updateReceived')
 let rowId
-
+console.log(rowId)
 function search() {
     var input, filter, table, tr, td, i, txtValue;
     input = document.getElementById("search");

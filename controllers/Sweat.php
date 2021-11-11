@@ -93,8 +93,7 @@ class Sweat extends Controller
         $this->loadModel("Sweats");
         $params = $this->Sweats->getCurrentReceivedRequest($id);
         $params["received"] == 1 ? $params["received"] = 0 : $params["received"] = 1;
-        $this->Sweats->updateReceived($id, $params);
-
+        $this->Sweats->updateReceivedWithMail($id, $params);
         $mailReceived = new PHPMailer();
         $mailReceived->isSMTP();
         $mailReceived->SMTPDebug = SMTP::DEBUG_SERVER;
@@ -112,6 +111,7 @@ class Sweat extends Controller
             header('location: /error');
             //echo "Mail error: " . $mailReceived->ErrorInfo;
         } else {
+            //var_dump($params[0]);
             header('location:/sweat/read');
         }
     }

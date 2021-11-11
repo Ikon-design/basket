@@ -44,7 +44,7 @@ isset($_SESSION['loged']) ? null : header('location: /login')
                                 ?>
                                 <input type="checkbox" onclick="valid(<?= $data['id'] ?>)">
                             <?php } else { ?>
-                                <input type='checkbox' <?= $data['received'] ?>
+                                <input type='checkbox' <?= $data['received']?>
                                        onclick=(window.location='./updateReceived/<?= $data['id'] ?>')>
                             <?php }
                             ?>
