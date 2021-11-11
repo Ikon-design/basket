@@ -64,6 +64,7 @@
                 <p id="tel"></p>
                 <p id="size"></p>
                 <p id="flocking"></p>
+                <p id="colors"></p>
                 <input class="formButton" type="submit" value="Valider" formaction="sweat/create"/>
             </div>
         </dialog>

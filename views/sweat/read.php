@@ -21,6 +21,7 @@ isset($_SESSION['loged']) ? null : header('location: /login')
                 <th>Payé</th>
                 <th>Reçu</th>
                 <th>Retiré</th>
+                <th>Supprimer</th>
             </tr>
 
             <?php
@@ -50,7 +51,7 @@ isset($_SESSION['loged']) ? null : header('location: /login')
                         </td>
                         <td><input type='checkbox' <?= $data['took'] ?>
                                    onclick=(window.location='./updateTook/<?= $data['id'] ?>')></td>
-                        <a></a>
+                        <td><a href="/sweat/delete/<?= $data['id'] ?>"><img src="/public/img/delete.png"></a></td>
                     </tr>
                     <?php
                 }

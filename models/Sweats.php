@@ -85,4 +85,10 @@ class Sweats extends Model
         $res = $query->execute();
     }
 
+    public function delete($id)
+    {
+        $sql = "DELETE FROM request WHERE request.id = $id";
+        $query = $this->bdd->prepare($sql);
+        $res = $query->execute();
+    }
 }

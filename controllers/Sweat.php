@@ -124,4 +124,10 @@ class Sweat extends Controller
         $this->Sweats->updateTook($id, $params);
         header('location:/sweat/read');
     }
+
+    public function delete($id){
+        $this->loadModel("Sweats");
+        $this->Sweats->delete($id);
+        header('location:/sweat/read');
+    }
 }
