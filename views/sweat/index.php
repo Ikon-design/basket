@@ -26,6 +26,7 @@
         <label class="form-name-left display-flex label">
             Sélectionnez une taille :
             <select name="size" class="input" onchange="onChangeValue('taille')">
+                <option selected hidden></option>
                 <option>6 ans</option>
                 <option>8 ans</option>
                 <option>10 ans</option>
@@ -41,6 +42,7 @@
         <label class="form-name-right display-flex label">
             Sélectionnez la couleur :
             <select name="colors" class="input">
+                <option selected hidden></option>
                 <option>Orange</option>
                 <option>Bleu</option>
                 <option>Blanc</option>

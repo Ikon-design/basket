@@ -1,4 +1,4 @@
-/*@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,500;1,500&display=swap');*/
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,500;1,500&display=swap');
 
 .main {
     min-height: 100vh;
@@ -127,6 +127,11 @@ td, tr, th {
 
 #formButton{
     align-self: center;
+}
+
+option{
+    background-color: #2a2a44;
+    color: white;
 }
 
 .formButton{
