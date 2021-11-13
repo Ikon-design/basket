@@ -10,6 +10,8 @@ class Sweat extends Controller
     /*
      * @return void
      */
+
+
     public function index()
     {
         $this->loadModel("Sweats");
@@ -34,22 +36,23 @@ class Sweat extends Controller
         $firstName = $_POST['firstName'];
         $mail = new PHPMailer();
         $mail->isSMTP();
-        $mail->SMTPDebug = SMTP::DEBUG_SERVER;
+        $mail->CharSet = "utf-8";
+        //$mail->SMTPDebug = SMTP::DEBUG_SERVER;
         $mail->Host = 'smtp.gmail.com';
         $mail->Port = 465;
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
         $mail->SMTPAuth = true;
         $mail->Username = 'nbc.contact.sweat@gmail.com';
         $mail->Password = 'RawxxjBzh6DmveG';
-        $mail->setFrom('nbc.contact.sweat@gmail.com', 'First Last');
+        $mail->setFrom('nbc.contact.sweat@gmail.com', 'Confirmation de commande Sweat NBC');
         $mail->addAddress($_POST["mail"], $name . " " . $firstName);
         $mail->Subject = 'Votre commande de Sweat';
-        $mail->msgHTML("eze");
+        $mail->msgHTML("<p>Madame, Monsieur</p><p>Nous vous confirmons la bonne prise en compte de votre commande et vous en remercions.</p><p>Voici les détails de votre commande à imprimer/joindre dans l'enveloppe de votre réglement et à donner à votre coach.</p><table><tr style='border: 1px solid black; padding: 5px 10px'><th style='border: 1px solid black; padding: 5px 10px'>Nom</th><th style='border: 1px solid black; padding: 5px 10px'>Prénom</th><th style='border: 1px solid black; padding: 5px 10px'>Taille</th><th style='border: 1px solid black; padding: 5px 10px'>Couleur</th><th style='border: 1px solid black; padding: 5px 10px'>Flockage</th></tr><tr style='border: 1px solid black; padding: 5px 10px'><td style='border: 1px solid black; padding: 5px 10px'>$_POST[name]</td><td style='border: 1px solid black; padding: 5px 10px'>$firstName</td><td style='border: 1px solid black; padding: 5px 10px; text-align: center'>$_POST[size]</td><td style='border: 1px solid black; padding: 5px 10px'>$_POST[colors]</td><td style='border: 1px solid black; padding: 5px 10px'>$_POST[flocking]</td></tr></table><p>Sans paiement reçu (10 décembre maximum), votre commande ne sera pas prise en compte.</p><p>Cordialement,<br>Le bureau NBC</p>");
         if (!$mail->send()) {
-            //header('location: /error');
-            echo "Mail error: " . $mail->ErrorInfo;
+            header('location: /error');
+            //echo "Mail error: " . $mail->ErrorInfo;
         } else {
-            header('location: ./success');
+            header('location: /sweat/success');
         }
     }
 
@@ -96,22 +99,22 @@ class Sweat extends Controller
         $this->Sweats->updateReceivedWithMail($id, $params);
         $mailReceived = new PHPMailer();
         $mailReceived->isSMTP();
-        $mailReceived->SMTPDebug = SMTP::DEBUG_SERVER;
+        $mailReceived->CharSet = "utf-8";
+        //$mailReceived->SMTPDebug = SMTP::DEBUG_SERVER;
         $mailReceived->Host = 'smtp.gmail.com';
         $mailReceived->Port = 465;
         $mailReceived->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
         $mailReceived->SMTPAuth = true;
         $mailReceived->Username = 'nbc.contact.sweat@gmail.com';
         $mailReceived->Password = 'RawxxjBzh6DmveG';
-        $mailReceived->setFrom('nbc.contact.sweat@gmail.com', 'Confirmation de reception');
+        $mailReceived->setFrom('nbc.contact.sweat@gmail.com', 'Confirmation de réception');
         $mailReceived->addAddress($params["mail"], $params["name"] . " " . $params["firstName"]);
         $mailReceived->Subject = 'Confirmation de reception';
-        $mailReceived->msgHTML("Yes on l'a");
+        $mailReceived->msgHTML("<p>Madame, Monsieur</p><p>Votre commande de sweet suivante est arrivé</p><table><tr style='border: 1px solid black; padding: 5px 10px'><th style='border: 1px solid black; padding: 5px 10px'>Nom</th><th style='border: 1px solid black; padding: 5px 10px'>Prénom</th><th style='border: 1px solid black; padding: 5px 10px'>Taille</th><th style='border: 1px solid black; padding: 5px 10px'>Couleur</th><th style='border: 1px solid black; padding: 5px 10px'>Flockage</th></tr><tr style='border: 1px solid black; padding: 5px 10px'><td style='border: 1px solid black; padding: 5px 10px'>$params[name]</td><td style='border: 1px solid black; padding: 5px 10px'>$params[firstName]</td><td style='border: 1px solid black; padding: 5px 10px; text-align: center'>$params[size]</td><td style='border: 1px solid black; padding: 5px 10px'>$params[colors]</td><td style='border: 1px solid black; padding: 5px 10px'>$params[flocking]</td></tr></table><p>Vous pouvez dés à présent venir la retirer en montrant ce mail.</p><p>Cordialement,<br>Le bureau NBC</p>");
         if (!$mailReceived->send()) {
             header('location: /error');
             //echo "Mail error: " . $mailReceived->ErrorInfo;
         } else {
-            //var_dump($params[0]);
             header('location:/sweat/read');
         }
     }
@@ -126,8 +129,12 @@ class Sweat extends Controller
     }
 
     public function delete($id){
-        $this->loadModel("Sweats");
-        $this->Sweats->delete($id);
-        header('location:/sweat/read');
+        if ( $_SESSION['loged'] == true ) {
+            $this->loadModel("Sweats");
+            $this->Sweats->delete($id);
+            header('location:/sweat/read');
+        } else {
+            header('location:/login');
+        }
     }
 }

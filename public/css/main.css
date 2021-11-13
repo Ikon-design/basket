@@ -9,6 +9,10 @@
     justify-content: center;
 }
 
+img{
+    margin-bottom: 20px;
+}
+
 .align-items-center {
     align-items: center;
 }
@@ -129,8 +133,11 @@ td, tr, th {
     align-self: center;
     width: -moz-fit-content;
     margin: 15px 0;
-    background-color: white;
+    border: #fd7203 1px solid;
+    color: #fd7203;
+    background-color: rgba(253, 114, 3, 0.04);
     font-family: "Montserrat", serif;
+    cursor: pointer;
 }
 
 #formButton, .formButton {

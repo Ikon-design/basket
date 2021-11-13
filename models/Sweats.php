@@ -43,7 +43,7 @@ class Sweats extends Model
 
     public function getCurrentReceivedRequest($id)
     {
-        $sql = "SELECT received, mail, name, firstName FROM request WHERE request.id = $id";
+        $sql = "SELECT received, mail, name, firstName, size, colors, flocking FROM request WHERE request.id = $id";
         $query = $this->bdd->prepare($sql);
         $res = $query->execute();
         return $query->fetch();

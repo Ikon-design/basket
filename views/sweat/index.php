@@ -3,7 +3,7 @@
 
 <?php ob_start(); ?>
 <main class="main display-flex align-items-center justify-content-center" onloadstart="onLoad()">
-    <img src="/public/img/logo.png" width="150px" >
+    <img src="/public/img/logo.svg" width="150px"  >
     <h2 class="request-title logo">Commande de sweat</h2>
     <form method="post" class="form-container">
         <label class="form-name-left display-flex label">
