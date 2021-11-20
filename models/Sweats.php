@@ -35,7 +35,7 @@ class Sweats extends Model
 
     public function getCurrentPayedRequest($id)
     {
-        $sql = "SELECT payed FROM request WHERE request.id = $id";
+        $sql = "SELECT mail, payed, name, firstName FROM request WHERE request.id = $id";
         $query = $this->bdd->prepare($sql);
         $res = $query->execute();
         return $query->fetch();

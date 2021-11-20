@@ -43,7 +43,7 @@ class Sweat extends Controller
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
         $mail->SMTPAuth = true;
         $mail->Username = 'nbc.contact.sweat@gmail.com';
-        $mail->Password = 'RawxxjBzh6DmveG';
+        $mail->Password = '';
         $mail->setFrom('nbc.contact.sweat@gmail.com', 'Confirmation de commande Sweat NBC');
         $mail->addAddress($_POST["mail"], $name . " " . $firstName);
         $mail->Subject = 'Votre commande de Sweat';
@@ -77,9 +77,33 @@ class Sweat extends Controller
     {
         $this->loadModel("Sweats");
         $params = $this->Sweats->getCurrentPayedRequest($id);
-        $params[0] == 1 ? $params = 0 : $params = 1;
-        $this->Sweats->updatePayed($id, $params);
-        header('location:/sweat/read');
+        $params["payed"] == 1 ? $params["payed"] = 0 : $params["payed"] = 1;
+        $this->Sweats->updatePayed($id, $params["payed"]);
+        if ($params["payed"] == 1){
+            $mailPayed = new PHPMailer();
+            $mailPayed->isSMTP();
+            $mailPayed->CharSet = "utf-8";
+            //$mailPayed->SMTPDebug = SMTP::DEBUG_SERVER;
+            $mailPayed->Host = 'smtp.gmail.com';
+            $mailPayed->Port = 465;
+            $mailPayed->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+            $mailPayed->SMTPAuth = true;
+            $mailPayed->Username = 'nbc.contact.sweat@gmail.com';
+            $mailPayed->Password = '';
+            $mailPayed->setFrom('nbc.contact.sweat@gmail.com', 'Confirmation de la réception du paiement');
+            $mailPayed->addAddress($params["mail"], $params["name"] . " " . $params["firstName"]);
+            $mailPayed->Subject = 'Confirmation de la réception du paiement';
+            $mailPayed->msgHTML("<p>Madame, Monsieur</p><p>Nous vous confirmons la bonne réception  de votre paiement pour le Neubourg Basket Club (commande de sweat).</p><p>Cordialement,<br>Le bureau NBC</p>");
+            if (!$mailPayed->send()) {
+                //header('location: /error');
+                echo "Mail error: " . $mailPayed->ErrorInfo;
+            } else {
+                header('location:/sweat/read');
+            }
+        }
+        else {
+            header('location:/sweat/read');
+        }
     }
 
     public function updateReceived($id)
@@ -106,7 +130,7 @@ class Sweat extends Controller
         $mailReceived->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
         $mailReceived->SMTPAuth = true;
         $mailReceived->Username = 'nbc.contact.sweat@gmail.com';
-        $mailReceived->Password = 'RawxxjBzh6DmveG';
+        $mailReceived->Password = '';
         $mailReceived->setFrom('nbc.contact.sweat@gmail.com', 'Confirmation de réception');
         $mailReceived->addAddress($params["mail"], $params["name"] . " " . $params["firstName"]);
         $mailReceived->Subject = 'Confirmation de reception';

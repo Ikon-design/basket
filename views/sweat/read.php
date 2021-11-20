@@ -1,5 +1,5 @@
 <?php $title = 'NBC - Sweat';
-isset($_SESSION['loged']) ? null : header('location: /login')
+isset($_SESSION['loged']) ? null : header('location: /login');
 ?>
 
 <?php ob_start(); ?>
