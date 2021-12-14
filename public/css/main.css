@@ -1,6 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,500;1,500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&display=swap');
 
+html{
+    background-color: #1a1a28;
+}
+
 .main {
     min-height: 100vh;
     background-color: #1a1a28;
@@ -110,7 +114,7 @@ td, tr, th {
 }
 
 .dialog-item {
-    width: 25vw;
+    width: auto;
     border-radius: 16px;
     margin: 0 35px;
     align-self: center;
@@ -225,5 +229,8 @@ h5{
     }
     .request-title{
         text-align: center;
+    }
+    .dialog-item{
+        width: auto;
     }
 }
